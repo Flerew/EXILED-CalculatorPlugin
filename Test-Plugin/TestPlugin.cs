@@ -4,7 +4,6 @@ using System;
 
 using Server = Exiled.Events.Handlers.Server;
 using Player = Exiled.Events.Handlers.Player;
-using System.Xml.Serialization;
 
 namespace Test_Plugin
 {
@@ -14,8 +13,8 @@ namespace Test_Plugin
 
         public override PluginPriority Priority { get; } = PluginPriority.Medium;
 
-        private Handlers.Player player;
-        private Handlers.Server server;
+        private Handlers.PlayerHandler player;
+        private Handlers.ServerHandler server;
 
         private TestPlugin() 
         { 
@@ -38,11 +37,12 @@ namespace Test_Plugin
 
         public void RegisterEvents()
         {
-            player = new Handlers.Player();
-            server = new Handlers.Server();
+            player = new Handlers.PlayerHandler();
+            server = new Handlers.ServerHandler();      
 
             Server.WaitingForPlayers += server.OnWaitingPlayers;
             Server.RoundStarted += server.OnRoundStarted;
+            Server.RespawningTeam += server.OnRespawningTeam;
 
             Player.Left += player.OnLeft;
             Player.Joined += player.OnJoined;

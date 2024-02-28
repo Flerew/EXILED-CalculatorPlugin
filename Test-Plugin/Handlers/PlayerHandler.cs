@@ -4,7 +4,7 @@ using Exiled.API.Enums;
 
 namespace Test_Plugin.Handlers
 {
-    class Player
+    internal sealed class PlayerHandler
     {
         public void OnLeft(LeftEventArgs ev)
         {
@@ -27,7 +27,7 @@ namespace Test_Plugin.Handlers
             }
             else
             {
-                ev.Player.AddItem(ItemType.KeycardChaosInsurgency);
+                ev.Player.AddItem(ItemType.KeycardMTFCaptain);
             }
         }
     }

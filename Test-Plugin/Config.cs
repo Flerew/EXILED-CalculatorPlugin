@@ -1,5 +1,7 @@
-﻿using Exiled.API.Interfaces;
+﻿using Exiled.API.Enums;
+using Exiled.API.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Test_Plugin
@@ -8,6 +10,7 @@ namespace Test_Plugin
     {
         public bool IsEnabled { get; set; } = true;
         public bool Debug { get; set; }
+
         [Description("Sets the message when someone joins the server. {player} will be replaced with the players name")]
         public string JoinedMessage { get; set; } = "{player} has joined the server";
 
@@ -15,5 +18,23 @@ namespace Test_Plugin
         public string LeftMessage { get; set; } = "{player} has leaves the server";
 
         public string RoundStartMessage { get; set; } = "Get ready!";
+
+        public string PlayerGOCMessage { get; set; } = "Annihilate anyone!";
+        public string PlayerGOCMessageCassie { get; set; } = "Unauthorized personal has entered of the facility";
+
+        public List<ItemType> playerGOCItems = new List<ItemType>() 
+        { 
+            ItemType.KeycardChaosInsurgency,
+            ItemType.ArmorCombat,
+            ItemType.GunCrossvec,
+            ItemType.GunRevolver, 
+            ItemType.GrenadeFlash,
+            ItemType.Medkit
+        };
+        public Dictionary<AmmoType, ushort> playerGOCAmmo = new Dictionary<AmmoType, ushort>()
+        {
+            { AmmoType.Ammo44Cal, 16 },
+            { AmmoType.Nato9, 90 }
+        };
     }
 }
