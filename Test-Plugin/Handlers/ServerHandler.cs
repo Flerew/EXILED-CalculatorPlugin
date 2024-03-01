@@ -8,6 +8,7 @@ using UnityEngine;
 using MapGeneration;
 using Exiled.API.Enums;
 using System.Linq;
+using Exiled.CustomRoles.API.Features;
 
 namespace Test_Plugin.Handlers
 {
@@ -40,9 +41,9 @@ namespace Test_Plugin.Handlers
             }
             Cassie.MessageTranslated(config.PlayerGOCMessageCassie, config.PlayerGOCMessageCassie);
         }
-
         private void SpawnPlayerGOC(Player player)
         {
+            player.Role.Set(RoleTypeId.CustomRole.);
             player.Role.Set(RoleTypeId.Tutorial);
             player.Health = 110f;
             player.Position = new Vector3(29, 992, -26);

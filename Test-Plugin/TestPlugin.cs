@@ -4,6 +4,11 @@ using System;
 
 using Server = Exiled.Events.Handlers.Server;
 using Player = Exiled.Events.Handlers.Player;
+using Exiled.CustomRoles;
+using Exiled.API.Features.Roles;
+using Exiled.CustomRoles.API.Features;
+using Test_Plugin.CustomRoles;
+using Exiled.CustomRoles.API;
 
 namespace Test_Plugin
 {
@@ -33,9 +38,10 @@ namespace Test_Plugin
         public override void OnDisabled()
         {
             UnregisterEvents();
+            RegisterCustomRoles();
         }
 
-        public void RegisterEvents()
+        private void RegisterEvents()
         {
             player = new Handlers.PlayerHandler();
             server = new Handlers.ServerHandler();      
@@ -49,7 +55,7 @@ namespace Test_Plugin
             Player.InteractingDoor += player.OnInteractionDoor;
         }
 
-        public void UnregisterEvents()
+        private void UnregisterEvents()
         {
             Server.WaitingForPlayers -= server.OnWaitingPlayers;
             Server.RoundStarted -= server.OnRoundStarted;
@@ -60,6 +66,11 @@ namespace Test_Plugin
 
             player = null;
             server = null;
+        }
+
+        private void RegisterCustomRoles()
+        {
+            Config.PlayableConfig.RoleGOC.Register();
         }
     }
 }

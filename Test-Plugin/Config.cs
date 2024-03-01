@@ -3,6 +3,7 @@ using Exiled.API.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Test_Plugin.ConfigObjects;
 
 namespace Test_Plugin
 {
@@ -18,6 +19,9 @@ namespace Test_Plugin
         public string LeftMessage { get; set; } = "{player} has leaves the server";
 
         public string RoundStartMessage { get; set; } = "Get ready!";
+
+        [Description("The configs for playable instances of GOC")]
+        public PlayableConfig PlayableConfig { get; set; } = new PlayableConfig();
 
         public string PlayerGOCMessage { get; set; } = "Annihilate anyone!";
         public string PlayerGOCMessageCassie { get; set; } = "Unauthorized personal has entered of the facility";

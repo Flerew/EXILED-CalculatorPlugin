@@ -75,6 +75,8 @@
     <Compile Include="Commands\Subtraction.cs" />
     <Compile Include="Commands\Summation.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="ConfigObjects\PlayableConfig.cs" />
+    <Compile Include="CustomRoles\RoleGOC.cs" />
     <Compile Include="Handlers\PlayerHandler.cs" />
     <Compile Include="Handlers\ServerHandler.cs" />
     <Compile Include="TestPlugin.cs" />
