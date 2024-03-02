@@ -16,7 +16,7 @@ namespace Test_Plugin.CustomRoles
         public override int MaxHealth { get; set; } = 110;
         public override string Name { get; set; } = "Global Occult Coalition";
         public override string Description { get; set; } = "You are a soldier of GOC, annihilate anyone!";
-        public override string CustomInfo { get; set; }
+        public override string CustomInfo { get; set; } = "";
         public override RoleTypeId Role { get; set; } = RoleTypeId.Tutorial;   
         public override List<string> Inventory { get; set; } = new List<string>() 
         {

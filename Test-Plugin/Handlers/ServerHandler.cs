@@ -1,20 +1,21 @@
 ﻿using Exiled.API.Features;
 using Exiled.Events.EventArgs.Server;
-using Exiled.Events;
 using System.Collections.Generic;
-using Exiled.API.Features.Roles;
 using PlayerRoles;
 using UnityEngine;
-using MapGeneration;
-using Exiled.API.Enums;
 using System.Linq;
+using Exiled.CustomRoles.API;
+using Exiled.API.Extensions;
 using Exiled.CustomRoles.API.Features;
+using Test_Plugin.CustomRoles;
+using Test_Plugin.ConfigObjects;
 
 namespace Test_Plugin.Handlers
 {
     internal sealed class ServerHandler
     {
-        Config config = new Config();
+        private Config config = new Config();
+        private PlayableConfig playableConfig = new PlayableConfig();
 
         public void OnWaitingPlayers()
         {
@@ -41,19 +42,20 @@ namespace Test_Plugin.Handlers
             }
             Cassie.MessageTranslated(config.PlayerGOCMessageCassie, config.PlayerGOCMessageCassie);
         }
+
         private void SpawnPlayerGOC(Player player)
         {
-            player.Role.Set(RoleTypeId.CustomRole.);
-            player.Role.Set(RoleTypeId.Tutorial);
+            player.Role.Set(playableConfig.RoleGOC.Role);
+
             player.Health = 110f;
             player.Position = new Vector3(29, 992, -26);
             player.ClearInventory();
 
-            foreach(ItemType item in config.playerGOCItems)
+            foreach (ItemType item in config.playerGOCItems)
             {
                 player.AddItem(item);
             }
-            for(int i = 0; i < config.playerGOCAmmo.Count; i++)
+            for (int i = 0; i < config.playerGOCAmmo.Count; i++)
             {
                 player.AddAmmo(config.playerGOCAmmo.Keys.ElementAt(i), config.playerGOCAmmo.Values.ElementAt(i));
             }
